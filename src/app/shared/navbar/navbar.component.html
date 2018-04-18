@@ -1,0 +1,39 @@
+<toaster-container [toasterconfig]="navConfig"></toaster-container>
+<clr-header class="header-6">
+
+  <div class="branding">
+    <a href="#" class="nav-link">
+      <span class="clr-icon clr-clarity-logo"></span>
+      <span class="title">BluSky Insurance App</span>
+    </a>
+  </div>
+  <div class="header-nav" [clr-nav-level]="1">
+    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
+      <span class="nav-text">Home</span>
+    </a>
+    <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">
+      <span class="nav-text">About</span>
+    </a>
+
+  </div>
+  <div class="header-actions">
+    <clr-dropdown>
+      <button class="nav-icon" clrDropdownTrigger>
+        <clr-icon shape="user"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <a *ngIf="!authService.loggedIn()" [routerLink]="['/login']" clrDropdownItem>
+          Login</a>
+        <a *ngIf="authService.loggedIn()" [routerLink]="['/profile']" clrDropdownItem>Profile</a>
+        <a *ngIf="authService.loggedIn()" (click)="onLogout()" clrDropdownItem>
+          Logout</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+    <a *ngIf="authService.loggedIn()" class="nav-link nav-icon" [routerLink]="['/dashboard']">
+      <clr-icon shape="dashboard"></clr-icon>
+    </a>
+
+  </div>
+
+</clr-header>

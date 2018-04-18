@@ -1,0 +1,34 @@
+<clr-main-container>
+  <app-navbar></app-navbar>
+    <toaster-container [toasterconfig]="config"></toaster-container>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12">
+            <form (submit)="onRegisterSubmit()" >
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Enter Username">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" [(ngModel)]="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder=" Enter Password">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Submit"></form>
+
+        </div>
+      </div>
+    </div>
+
+</clr-main-container>
+
+
+    

@@ -1,0 +1,138 @@
+<clr-wizard #wizard [(clrWizardOpen)]="mdOpen" [clrWizardSize]="'xl'">
+
+  <toaster-container [toasterconfig]="config"></toaster-container>
+  <clr-wizard-page (clrWizardPageCustomButton)="doCustomClick($event)" [clrWizardPageNextDisabled]="name.pristine || !formPageOne.valid">
+
+    <ng-template clrPageTitle>What is your name?</ng-template>
+    <ng-template clrPageNavTitle>Name and Surname</ng-template>
+    <form #formPageOne="ngForm">
+      <section class="form-block">
+
+        <div class="form-group">
+          <label>First Name</label>
+          <label for="nameInput" aria-haspopup="true" role="tooltip" [class.invalid]="name.touched && !name.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+            <input type="text" id="nameInput" required [(ngModel)]="model.fname" name="fname" #name="ngModel">
+            <span class="tooltip-content">You must enter a first name!</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Surname</label>
+          <label for="nameInput" aria-haspopup="true" role="tooltip" [class.invalid]="name.touched && !name.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+            <input type="text" id="nameInput" required [(ngModel)]="model.sname" name="sname" #name="ngModel">
+            <span class="tooltip-content">You must enter a surname!</span>
+          </label>
+        </div>
+
+      </section>
+    </form>
+
+    <ng-template clrPageButtons>
+      <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+      <clr-wizard-button [type]="'custom-next'">Next</clr-wizard-button>
+    </ng-template>
+  </clr-wizard-page>
+
+  <clr-wizard-page (clrWizardPageCustomButton)="doCustomClick($event)" [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
+    <ng-template clrPageTitle>Hi {{ this.model.fname }}, could you provide a telephone number ?</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>
+      What is your telephone number?
+    </ng-template>
+    <!-- optional -->
+    <form #formPageTwo="ngForm">
+      <section class="form-block">
+
+        <div class="form-group">
+          <label>Your number</label>
+          <label for="numberInput" aria-haspopup="true" role="tooltip" [class.invalid]="number.touched && !number.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+            <input type="number" id="numberInput" required [(ngModel)]="model.pnumber" name="number" #number="ngModel">
+            <span class="tooltip-content">
+              You must enter a phone number to continue!
+            </span>
+          </label>
+        </div>
+      </section>
+    </form>
+    <ng-template clrPageButtons>
+        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+        <clr-wizard-button [type]="'custom-previous'">Previous</clr-wizard-button>
+        <clr-wizard-button [type]="'custom-next'">Next</clr-wizard-button>
+      </ng-template>
+  </clr-wizard-page>
+
+  <clr-wizard-page (clrWizardPageCustomButton)="doCustomClick($event)" [clrWizardPageNextDisabled]="email.pristine || !formPageThree.valid">
+    <ng-template clrPageTitle>Hi {{ this.model.fname }}, could you provide an email address ?</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>
+      What is your email?
+    </ng-template>
+    <!-- optional -->
+    <form #formPageThree="ngForm">
+      <section class="form-block">
+
+        <div class="form-group">
+          <label>Email</label>
+          <label for="emailInput" aria-haspopup="true" role="tooltip" [class.invalid]="email.touched && !email.valid" class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+            <input type="email" id="emailInput" required [(ngModel)]="model.email" name="email" #email="ngModel">
+            <span class="tooltip-content">
+              You must enter a valid email address!
+            </span>
+          </label>
+        </div>
+      </section>
+    </form>
+    <ng-template clrPageButtons>
+        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+        <clr-wizard-button [type]="'custom-previous'">Previous</clr-wizard-button>
+        <clr-wizard-button [type]="'custom-next'">Next</clr-wizard-button>
+      </ng-template>
+  </clr-wizard-page>
+
+  <clr-wizard-page (clrWizardPageCustomButton)="doCustomClick($event)" [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid || !formPageThree.valid">
+    <ng-template clrPageTitle>Lets Review!</ng-template>
+    <!-- mandatory -->
+    <ng-template clrPageNavTitle>
+      <span *ngIf="formPageOne.valid && formPageTwo.valid && formPageThree.valid">
+        Ready to go!
+      </span>
+      <span *ngIf="!formPageOne.valid || !formPageTwo.valid || !formPageThree.valid">
+        Not ready yet
+      </span>
+    </ng-template>
+    <!-- optional -->
+
+    <div *ngIf="formPageOne.valid && formPageTwo.valid && formPageThree.valid">
+      <p>If you are happy with the information, please submit!.</p>
+      <form class="compact">
+        <label>Your information</label>
+        <section class="form-block">
+          <div class="form-group">
+            <label>Your name:</label>
+            <span>{{ this.model.fname }}</span>
+          </div>
+          <div class="form-group">
+            <label>Phone Number:</label>
+            <span>{{ this.model.pnumber }}</span>
+          </div>
+          <div class="form-group">
+            <label>Email Address:</label>
+            <span>{{ this.model.email }}</span>
+          </div>
+
+
+        </section>
+      </form>
+      <ng-template clrPageButtons>
+          <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+          <clr-wizard-button [type]="'custom-previous'">Previous</clr-wizard-button>
+          <clr-wizard-button [type]="'submit'">Submit</clr-wizard-button>
+        </ng-template>
+    </div>
+
+    <div *ngIf="!formPageOne.valid || !formPageTwo.valid || !formPageThree.valid">
+
+      <p>Not quite there yet.</p>
+    </div>
+
+  </clr-wizard-page>
+</clr-wizard>

@@ -1,0 +1,35 @@
+<clr-main-container>
+  <app-navbar></app-navbar>
+  <toaster-container [toasterconfig]="config"></toaster-container>
+
+  <div class="login-wrapper">
+    <form class="login" (submit)="onLoginSub()" >
+      <label class="title">
+        <h3 class="welcome">Welcome to</h3>
+        BluSky Insurance 
+        <h5 class="hint">Use your username to sign in or create one now</h5>
+      </label>
+      <div class="login-group">
+        <div class="auth-source select">
+          <select id="login-auth-source-1">
+            <option>Local Users</option>
+            <option>Administrator</option>
+          </select>
+        </div>
+        <input class="username" type="text"  placeholder="Email Address" [(ngModel)]="username" name="username">
+        <input class="password" type="password" placeholder="Password" [(ngModel)]="password" name="password">
+        <div class="checkbox">
+          <input type="checkbox" id="rememberme">
+          <label for="rememberme"> Remember me </label>
+        </div>
+        
+        <input type="submit" class="btn btn-primary" value="Login">
+        <a [routerLink]="['/register']" class="signup">Sign up today!</a>
+      </div>
+    </form>
+  </div>
+
+
+
+
+</clr-main-container>
