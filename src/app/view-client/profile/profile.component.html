@@ -5,12 +5,15 @@
      <div class="col-xl-12">
       <div *ngIf="user">
         <h2 class="page-header">
-          {{user.name}}
+          Hello  {{ user.name }} !
         </h2>
       
         <ul class="list-group">
           <li class="list-group-item">Username: {{user.username}}</li>
           <li class="list-group-item">Email: {{user.email}}</li>
+          <li class="list-group-item">Number: {{user.number}}</li>
+          <li class="list-group-item">Address: {{user.address}}</li>
+          <li class="list-group-item">Address 2: {{user.address2}}</li>
         </ul>
       </div>
      </div>

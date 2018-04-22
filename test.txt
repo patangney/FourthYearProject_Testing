@@ -1,0 +1,143 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<clr-wizard #wizard [(clrWizardOpen)]="mdOpen" (clrWizardOnFinish)="onRegisterSubmit()" [clrWizardSize]="'xl'">
+
+  <clr-wizard-page (clrWizardPageCustomButton)="onCustomClick($event)" [clrWizardPageNextDisabled]="!formPageOne.valid">
+
+    <ng-template clrPageTitle>What is your name?</ng-template>
+    <ng-template clrPageNavTitle>Name and Surname</ng-template>
+    
+    <form #formPageOne="ngForm" [formGroup]="userForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+        <section class="form-block">
+            <div class="form-group">
+                <label for="clientName">Name</label>
+                <label for="clientName"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                    [class.invalid]="userForm.get('name').invalid
+                        && (userForm.get('name').dirty || userForm.get('name').touched)">
+                    <input id="clientName" type="text"
+                        formControlName="name" [(ngModel)]="name">
+                    <span class="tooltip-content">
+                        Name is required.
+                    </span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <label for="userName"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                    [class.invalid]="userForm.get('username').invalid
+                        && (userForm.get('username').dirty || userForm.get('username').touched)">
+                    <input id="userName" type="text"
+                        formControlName="username" [(ngModel)]="username">
+                    <span class="tooltip-content">
+                        Username is required.
+                    </span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="userPassword">Password</label>
+                <label for="userPassword"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                    [class.invalid]="userForm.get('password').invalid
+                        && (userForm.get('password').dirty || userForm.get('password').touched)">
+                    <input id="userPassword" type="password"
+                        formControlName="password" [(ngModel)]="password">
+                    <span class="tooltip-content">
+                        One Capital Letter,
+                        One Number
+                    </span>
+                    <!-- <p>Min: 6 Characters</p> -->
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="userEmail">email</label>
+                <label for="userEmail"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                    [class.invalid]="userForm.get('email').invalid
+                        && (userForm.get('email').dirty || userForm.get('email').touched)">
+                    <input id="userEmail" type="text"
+                        formControlName="email" [(ngModel)]="email">
+                    <span class="tooltip-content">
+                        You must enter a valid email address
+                    </span>
+                    
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="userPhone">phone number</label>
+                <label for="userPhone"
+                    aria-haspopup="true"
+                    role="tooltip"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                    [class.invalid]="userForm.get('number').invalid
+                        && (userForm.get('number').dirty || userForm.get('number').touched)">
+                    <input id="userPhone" type="text"
+                        formControlName="number" [(ngModel)]="number">
+                    <span class="tooltip-content">
+                        You must enter a valid phone number!
+                    </span>
+                    
+                </label>
+            </div>
+            <div formGroupName="useraddress">
+                <div class="form-group">
+                    <label for="userAddress">address</label>
+                    <label for="userAddress"
+                        aria-haspopup="true"
+                        role="tooltip"
+                        class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                        [class.invalid]="userForm.get('useraddress').get('address').invalid
+                            && (userForm.get('useraddress').get('address').dirty || userForm.get('useraddress').get('address').touched)">
+                        <input id="userAddress" type="text"
+                            formControlName="address" [(ngModel)]="address">
+                        <span class="tooltip-content">
+                            Please provide an address
+                        </span>
+                        
+                    </label>
+                </div>
+
+            </div>
+            <div formGroupName="useraddress">
+                <div class="form-group">
+                    <label for="userAddress2">address</label>
+                    <label for="userAddress2"
+                        aria-haspopup="true"
+                        role="tooltip"
+                        class="tooltip tooltip-validation tooltip-md tooltip-bottom-right"
+                        [class.invalid]="userForm.get('useraddress').get('address2').invalid
+                            && (userForm.get('useraddress').get('address2').dirty || userForm.get('useraddress').get('address2').touched)">
+                        <input id="userAddress2" type="text"
+                            formControlName="address2" [(ngModel)]="address2">
+                        <span class="tooltip-content">
+                            Please provide an address
+                        </span>
+                        
+                    </label>
+                </div>
+
+            </div>
+            
+  
+        </section>
+    </form>
+
+    <ng-template clrPageButtons>
+      <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+      <clr-wizard-button [type]="'custom-next'">Next</clr-wizard-button>
+      <clr-wizard-button [type]="'finish'">Submit</clr-wizard-button>
+    </ng-template>
+  </clr-wizard-page>
+
+  
+
+
+</clr-wizard>

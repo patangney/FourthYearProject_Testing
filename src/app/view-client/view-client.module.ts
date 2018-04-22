@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ClarityModule } from '@clr/angular';
 import { LoginComponent } from './login/login.component';
 import { AboutComponent } from './about/about.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValidateService } from '../services/validate.service';
 import { AuthService } from '../services/auth.service';
 import { TestComponent } from './test/test.component';
@@ -18,6 +18,7 @@ import { ToasterModule } from 'angular2-toaster';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { Test2Component } from './test2/test2.component';
 
 
 
@@ -28,12 +29,13 @@ import { AuthGuard } from '../guards/auth.guard';
     HttpModule,
     FormsModule,
     ViewClientRoutingModule,
+    ReactiveFormsModule,
     SharedModule,
     ClarityModule,
     ToasterModule.forRoot(),
     
   ],
-  declarations: [HomepageComponent, RegisterComponent, LoginComponent, AboutComponent, TestComponent, DashboardComponent, ProfileComponent],
+  declarations: [HomepageComponent, RegisterComponent, LoginComponent, AboutComponent, TestComponent, DashboardComponent, ProfileComponent, Test2Component],
   providers: [ValidateService, AuthService, AuthGuard]
 })
 export class ViewClientModule { }

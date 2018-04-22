@@ -1,34 +1,60 @@
 <clr-main-container>
   <app-navbar></app-navbar>
-    <toaster-container [toasterconfig]="config"></toaster-container>
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-12">
-            <form (submit)="onRegisterSubmit()" >
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" [(ngModel)]="name" name="name" class="form-control" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Enter Username">
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" [(ngModel)]="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder=" Enter Password">
-                </div>
-                <input type="submit" class="btn btn-primary" value="Submit"></form>
 
-        </div>
+  <toaster-container [toasterconfig]="config"></toaster-container>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <form #userForm (ngSubmit)="onRegisterSubmit()" [hidden]="submitted">
+          <section class="form-block">
+            <!-- First Name -->
+            <label>User Details</label>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <label for="name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-lg" [class.invalid]="firstName.invalid && (firstName.dirty || firstName.touched)">
+                <input type="text" id="firstName" placeholder="Enter first name" required name="firstName" [(ngModel)]="name" #firstName="ngModel">
+                <span class="tooltip-content">First Name required</span>
+              </label>
+            </div>
+            <!-- username  -->
+            <div class="form-group">
+              <label for="username">Username</label>
+              <label for="username" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-lg" [class.invalid]="userName.invalid && (userName.dirty || userName.touched)">
+                <input type="text" id="userName" placeholder="Enter username" required name="userName" [(ngModel)]="username" #userName="ngModel">
+                <span class="tooltip-content">User name required</span>
+              </label>
+            </div>
+            <!-- email  -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <label for="email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-lg" [class.invalid]="emailADD.invalid && (emailADD.dirty || emailADD.touched)">
+                <input type="text" id="emailADD" placeholder="Enter email address" required name="emailADD" [(ngModel)]="email" #emailADD="ngModel">
+                <span class="tooltip-content">Email address required</span>
+              </label>
+            </div>
+            <!-- user password  -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <label for="password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-lg" [class.invalid]="userPassword.invalid && (userPassword.dirty || userPassword.touched)">
+                <input type="password" id="userPassword" placeholder="Enter password" required name="userPassword" [(ngModel)]="password"
+                  #userPassword="ngModel">
+                <span class="tooltip-content">Please enter a password</span>
+              </label>
+            </div>
+
+
+            <!-- end section -->
+          </section>
+
+          <input type="submit" class="btn btn-primary" value="Submit">
+          <button class="btn btn-success" type="submit" [disabled]="userForm.invalid">Submit</button>
+
+        </form>
       </div>
     </div>
+  </div>
+
+
+
 
 </clr-main-container>
-
-
-    

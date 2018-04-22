@@ -5,14 +5,24 @@ export class ValidateService {
 
   constructor() { }
 
+  
   validateRegister(user) {
     // tslint:disable-next-line:triple-equals
-    if (user.name == undefined || user.email == undefined || user.username == undefined || user.password == undefined) {
+    if (user.name == undefined || 
+      user.email == undefined || 
+      user.username == undefined || 
+      user.password == undefined ||
+      user.number == undefined ||
+      user.address == undefined ||
+      user.address2 == undefined 
+    ) {
       return false;
     } else {
       return true;
     }
   }
+
+  
 
 
   validateEmail(email) {

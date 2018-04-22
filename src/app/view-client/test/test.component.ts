@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild, Input, Inject } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ClrWizard } from '@clr/angular';
 import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
 import { ValidateService } from '../../services/validate.service';
@@ -13,21 +13,112 @@ import Swal from 'sweetalert2';
   styleUrls: ['./test.component.scss']
 })
 export class TestComponent implements OnInit {
-  @ViewChild("wizard") wizard: ClrWizard;
+  @ViewChild('wizard') wizard: ClrWizard;
+  @Input() FormData;
 
   mdOpen: boolean = true;
-  loadingFlag: boolean = false;
-  errorFlag: boolean = false;
+  submitted = false;
 
-  model = {
-    fname: "",
-    sname: "",
-    username: "",
-    pnumber: "",
-    email: "",
-    password: ""
-  };
+  formModel = {
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    number: '',
+    address: '',
+    address2: '',
+  }
 
+  userForm: FormGroup;
+
+  // Validation
+  emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
+  passRegex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}$';
+  phoneNumber = '^\s*(?:(?:00|\+)[\d]{1,3}\s*)?\(?\s*\d{1,4}\s*\)?\s*[\d\s]{5,10}\s*$';
+
+
+
+
+  // ) {
+  //   this.toasterService = toasterService;
+  // }
+
+  constructor(
+    private validateService: ValidateService,
+    private toasterService: ToasterService,
+    private authService: AuthService,
+    private router: Router,
+    @Inject(FormBuilder) fb: FormBuilder) {
+
+    this.userForm = fb.group({
+      name: ['', Validators.required],
+      username: ['', Validators.required],
+      email: ['', [
+        <any>Validators.required,
+        <any>Validators.pattern(this.emailRegex)
+      ]],
+      password: ['', [
+        <any>Validators.required,
+        <any>Validators.pattern(this.passRegex)
+      ]],
+      address: ['', Validators.required],
+      address2: ['', Validators.required],
+      number: ['', [
+        Validators.required,
+        Validators.pattern(this.phoneNumber),
+        Validators.minLength(3),
+        Validators.maxLength(10),
+      ]],
+
+    })
+  }
+
+
+
+
+
+  //
+
+  // userForm = new FormGroup({
+
+  //   name: new FormControl('', Validators.required),
+  //   username: new FormControl('', Validators.required),
+  //   password: new FormControl('', [
+  //     Validators.required,
+  //     Validators.pattern(this.passRegex)
+  //   ]),
+  //   email: new FormControl('', [
+  //     <any>Validators.required,
+  //     <any>Validators.pattern(this.emailRegex)
+
+  //   ]),
+  //   number: new FormControl('', [
+  //     <any>Validators.required,
+  //     Validators.minLength(10),
+  //     Validators.maxLength(10)
+  //   ]),
+  //   useraddress: new FormGroup({
+  //     address: new FormControl('', Validators.required),
+  //     address2: new FormControl('', Validators.required),
+  //   })
+
+
+  // })
+
+  // submitted = false;
+
+
+
+  // constructor(
+  //   private validateService: ValidateService,
+  //   private toasterService: ToasterService,
+  //   private authService: AuthService,
+  //   private router: Router
+  // ) {
+  //   this.toasterService = toasterService;
+  // }
+
+  // tslint:disable-next-line:member-ordering
   public config: ToasterConfig = new ToasterConfig({
     showCloseButton: false,
     tapToDismiss: true,
@@ -35,94 +126,58 @@ export class TestComponent implements OnInit {
     animation: 'fade'
   });
 
-  constructor(
-    private validateService: ValidateService,
-    private authService: AuthService,
-    private toasterService: ToasterService,
-    private router: Router
-  ) { }
-
-  public doCustomClick(buttonType: string): void {
+  onCustomClick(buttonType: string): void {
     if ("custom-next" === buttonType) {
       this.wizard.next();
     }
-
-    if ("custom-previous" === buttonType) {
-      this.wizard.previous();
-    }
-
-    if ("submit" === buttonType) {
-      const user = {
-        fname: this.model.fname,
-        sname: this.model.sname,
-        username: this.model.username,
-        email: this.model.email,
-        password: this.model.password,
-        pnumber: this.model.pnumber
-      }
-
-      if (!this.validateService.validateRegister(user)) {
-        console.log('Please fill in all fields!')
-        this.toasterService.pop('warning', 'Error', 'Please fill in all fields!');
-      }
-
-      if (!this.validateService.validateEmail(user.email)) {
-        console.log('Please input a valid email')
-      }
-
-      this.authService.registerUser(user).subscribe(data => {
-        if (data.success) {
-          Swal({
-            title: 'Success',
-            text: 'You have successfully registered, please login!',
-            type: 'success',
-            confirmButtonText: 'Login'
-          });
-          this.router.navigate(['/login']);
-        } else {
-          this.toasterService.pop('warning', 'Oops!', 'Something went wrong =[');
-          this.router.navigate(['/register']);
-  
-        }
-      });
-
-    }
-
   }
 
-  onSubmit() {
+  onRegisterSubmit() {
     const user = {
-      fname: this.model.fname,
-      sname: this.model.sname,
-      username: this.model.username,
-      email: this.model.email,
-      password: this.model.password,
-      pnumber: this.model.pnumber
-    }
+      name: this.formModel.name,
+      email: this.formModel.email,
+      username: this.formModel.username,
+      password: this.formModel.password,
+      number: this.formModel.number,
+      address2: this.formModel.address2,
+      address: this.formModel.address
+    };
 
     if (!this.validateService.validateRegister(user)) {
-      console.log('Please fill in all fields!')
+      console.log('');
+      this.toasterService.pop('warning', 'Error', 'Please fill in all fields!');
+      return false;
+
     }
 
+
     if (!this.validateService.validateEmail(user.email)) {
-      console.log('Please input a valid email')
-    }
+      console.log('');
+      this.toasterService.pop('warning', 'Error', 'Please fill in valid email address!');
+      return false;
+
+    };
+
 
     this.authService.registerUser(user).subscribe(data => {
       if (data.success) {
-        console.log('Data submitted to server');
+        Swal({
+          title: 'Success',
+          text: 'You have successfully registered, please login!',
+          type: 'success',
+          confirmButtonText: 'Login'
+        });
         this.router.navigate(['/login']);
       } else {
-        console.log('Oops something went wrong');
-        this.router.navigate(['/home'])
+        Swal({
+          title: 'Something went wrong ',
+          text: 'Username / Email Already exits',
+          type: 'warning'
+        });
+        window.location.reload();
       }
-
-
-    })
-
+    });
   }
-
-
 
 
 
