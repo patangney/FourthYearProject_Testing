@@ -19,15 +19,27 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  number: {
+  phonenumber: {
     type: String,
     required: true
   },
-  address: {
+  housename: {
+    type: String,
+    required: false
+  },
+  addressline1: {
     type: String,
     required: true
   },
-  address2: {
+  addressline2: {
+    type: String,
+    required: true
+  },
+  addressline3: {
+    type: String,
+    required: false
+  },
+  county: {
     type: String,
     required: true
   },

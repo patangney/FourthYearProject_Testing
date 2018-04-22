@@ -24,19 +24,20 @@ export class Test2Component implements OnInit {
         name: "",
         username: "",
         password: "",
-        number: "",
-        address: "",
-        address2: "",
+        phonenumber: "",
+        addressline1: "",
+        addressline2: "",
+        addressline3: "",
+        housename: "",
+        county: "",
         email: ""
     };
 
     userRegForm = new FormGroup({
         fullName: new FormControl('', Validators.required),
         username: new FormControl('', Validators.required),
-        address: new FormGroup({
-            streetAddress: new FormControl('', Validators.required),
-            streetAddress2: new FormControl('', Validators.required),
-        }),
+        streetaddress: new FormControl('', Validators.required),
+        
         email: new FormControl('', [
             Validators.required,
             Validators.pattern(this.emailRegex)

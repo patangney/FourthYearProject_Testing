@@ -13,8 +13,10 @@ router.post('/register', (req, res, next) => {
         username: req.body.username,
         password: req.body.password,
         number: req.body.number,
-        address2: req.body.address2,
-        address: req.body.address
+        street1: req.body.street1,
+        street2: req.body.street2,
+        street3: req.body.street3,
+        county: req.body.county
     });
 
     User.addUser(newUser, (err, user) => {

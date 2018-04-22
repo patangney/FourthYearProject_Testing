@@ -1,5 +1,3 @@
-
-
 <clr-wizard #wizard [(clrWizardOpen)]="open">
     <clr-wizard-title>BluSky Insurance </clr-wizard-title>
 
@@ -57,36 +55,36 @@
             </section>
         </form>
     </clr-wizard-page>
-
-    <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.get('address').get('streetAddress2').valid">
-        <ng-template clrPageTitle>Step Two</ng-template> <!-- mandatory -->
+    <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['streetaddress'].valid">
+        <ng-template clrPageTitle>Step Three</ng-template> 
         <form [formGroup]="userRegForm" #formPageThree="ngForm">
             <section class="form-block">
-                <h3> What is your address  {{ this.model.name }} ?</h3>
-                <!-- <h4> Please input a username and password</h4> -->
+                <h3> {{ this.model.name }} ,</h3>
+                <h4> What is your address ?</h4>
                 <br>
                 <div class="form-group">
-                    <label>House Name / Number</label>
-                    <label for="userNameInput" aria-haspopup="true" role="tooltip"
-                        [class.invalid]="userRegForm.get('address').get('streetAddress').touched && !userRegForm.get('address').get('streetAddress2').valid"
-                        class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-                        <input type="text" id="userName" [(ngModel)]="model.address" name="address" formControlName="streetAddress" >
-                        <span class="tooltip-content">You must provide a house name or house number!</span>
+                    <label>House Name | House Number </label>
+                    <label for="houseName" aria-haspopup="true" role="tooltip"                        
+                        class="">
+                        <input type="text" id="houseName" [(ngModel)]="model.housename" name="housename">
+                        <!-- <span class="tooltip-content">You must provide an address!</span> -->
                     </label>
                 </div>
                 <div class="form-group">
-                    <label>Street</label>
-                    <label for="userPasswordInput" aria-haspopup="true" role="tooltip"
-                        [class.invalid]="userRegForm.get('address').get('streetAddress2').touched && !userRegForm.get('address').get('streetAddress2').valid"
+                    <label>Address Line 1</label>
+                    <label for="addressLineOne" aria-haspopup="true" role="tooltip"
+                        [class.invalid]="userRegForm.get('streetaddress').touched && !userRegForm.get('streetaddress').valid"
                         class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
-                        <input type="text" id="userPassword" [(ngModel)]="model.address2" name="address2" formControlName="streetAddress2" >
-                        <span class="tooltip-content">Please provide a valid address!.</span>
+                        <input type="password" id="addressLineOne" [(ngModel)]="model.password" name="password" formControlName="password" >
+                        <span class="tooltip-content">Password must contain: 1 digit, 1 Captial, 8 chars min.</span>
                     </label>
                 </div>
                 
             </section>
         </form>
     </clr-wizard-page>
+
+    
 
     <!-- <clr-wizard-page [clrWizardPageNextDisabled]="number.pristine || !formPageTwo.valid">
         <ng-template clrPageTitle>We need a number</ng-template> 
@@ -144,9 +142,9 @@
             </form>
         </div> -->
 
-        <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
+        <!-- <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
             <p>Not quite there yet.</p>
-        </div>
+        </div> -->
 
     <!-- </clr-wizard-page> -->
     <p>Form value: {{ this.model | json }}</p>
