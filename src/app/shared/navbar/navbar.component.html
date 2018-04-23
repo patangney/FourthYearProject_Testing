@@ -34,6 +34,21 @@
       <clr-icon shape="dashboard"></clr-icon>
     </a>
 
-  </div>
+  </div> 
 
 </clr-header>
+<div class="userSubNavigation" >
+    <nav class="subnav" [hidden]="!authService.loggedIn()">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="authService.loggedIn()" [routerLink]="['/dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" *ngIf="authService.loggedIn()" [routerLink]="['/profile']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Profile</a>
+            </li>
+            
+        </ul>
+    </nav>
+
+</div>
+

@@ -1,0 +1,70 @@
+<clr-main-container>
+  <app-navbar></app-navbar>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>User Information for {{ user.firstname }} {{ user.surname }}</h1>
+        <div class="card" *ngIf="user !=null">
+          
+          <div class="card-block">
+            <p class="card-text">
+              First Name: {{ user.firstname }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Surname: {{ user.surname }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Username: {{ user.username }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Email: {{ user.email }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Phone Number: {{ user.phonenumber }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              House Name | House Number: {{ user.housenumber }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Address Line One: {{ user.addressline1 }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Address Line Two: {{ user.addressline2 }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              Address Line Three: {{ user.addressline3 }}
+            </p>
+          </div>
+          <div class="card-block">
+            <p class="card-text">
+              County: {{ user.county }}
+            </p>
+          </div>
+          <div class="card-footer">
+              <a class="btn btn-primary" [routerLink]="['/client-edit', user._id]">Edit</a>
+              <a class="btn btn-danger" (click)="deleteBook(book._id)">Delete</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ 
+  
+</clr-main-container>

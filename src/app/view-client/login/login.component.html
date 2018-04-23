@@ -16,12 +16,9 @@
             <option>Administrator</option>
           </select>
         </div>
-        <input class="username" type="text"  placeholder="Email Address" [(ngModel)]="username" name="username">
+        <input class="username" type="text"  placeholder="Username" [(ngModel)]="username" name="username">
         <input class="password" type="password" placeholder="Password" [(ngModel)]="password" name="password">
-        <div class="checkbox">
-          <input type="checkbox" id="rememberme">
-          <label for="rememberme"> Remember me </label>
-        </div>
+        
         
         <input type="submit" class="btn btn-primary" value="Login">
         <a [routerLink]="['/register']" class="signup">Sign up today!</a>

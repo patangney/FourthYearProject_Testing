@@ -132,6 +132,8 @@ export class TestComponent implements OnInit {
     }
   }
 
+  
+
   onRegisterSubmit() {
     const user = {
       name: this.formModel.name,

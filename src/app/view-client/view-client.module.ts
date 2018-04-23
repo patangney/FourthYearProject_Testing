@@ -19,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { Test2Component } from './test2/test2.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 
 
@@ -35,7 +36,7 @@ import { Test2Component } from './test2/test2.component';
     ToasterModule.forRoot(),
     
   ],
-  declarations: [HomepageComponent, RegisterComponent, LoginComponent, AboutComponent, TestComponent, DashboardComponent, ProfileComponent, Test2Component],
+  declarations: [HomepageComponent, RegisterComponent, LoginComponent, AboutComponent, TestComponent, DashboardComponent, ProfileComponent, Test2Component, EditProfileComponent],
   providers: [ValidateService, AuthService, AuthGuard]
 })
 export class ViewClientModule { }

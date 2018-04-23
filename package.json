@@ -28,6 +28,7 @@
     "angular2-jwt": "^0.2.3",
     "angular2-toaster": "^5.0.1",
     "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "concurrently": "^3.5.1",
     "core-js": "^2.5.5",

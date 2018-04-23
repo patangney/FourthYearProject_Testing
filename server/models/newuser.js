@@ -4,7 +4,12 @@ const config = require('../config/database');
 
 // User Schema
 const UserSchema = mongoose.Schema({
-  name: {
+  firstname: {
+    type: String,
+    lowercase: false,
+    required: true
+  },
+  surname: {
     type: String,
     lowercase: false,
     required: true
@@ -60,8 +65,31 @@ const UserSchema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', UserSchema);
 
+module.exports.getAllUsers = function (id, callback) {
+  User.find(id, callback);
+}
+
 module.exports.getUserById = function (id, callback) {
   User.findById(id, callback);
+}
+
+module.exports.roleAuthorisation = function(roles) {
+  return function(req, res, next) {
+    const user = req.user;
+    User.findById(user._id, function(err, foundUser) {
+      if (err) {
+        res.status(422).json({error: 'No user found'});
+        return next(err);
+      }
+      if (roles.indexOf(foundUser.role) > -1) {
+        return next();
+      }
+      res.status(401).json({error: 'You are not authorised to view this content'});
+      return next('Unauthorised');
+    });
+
+  }
+  
 }
 
 module.exports.getUserByUsername = function (username, callback) {

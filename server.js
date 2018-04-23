@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 const mongoose = require('mongoose'); // HTTP request logger middleware for node.js
+mongoose.Promise = require('bluebird');
 const mongoLabs = require('./server/config/database'); // Database config
 const morgan = require('morgan');
 
@@ -14,7 +15,7 @@ const userRoutes = require('./server/routes/user');
 
 
 // MongoLabs
-mongoose.connect(mongoLabs.mongo.url, (err) => {
+mongoose.connect(mongoLabs.mongo.url, { promiseLibrary: require('bluebird') }, (err) => {
   if (err) {
       console.log ('MongoLab Connection Failed! '+err);
   }else {
@@ -43,6 +44,7 @@ require('./server/config/passport')(passport);
 
 // Use routes /api/routes...
 app.use('/api', userRoutes);
+
 
 app.get('*', (req, res) => {
   res.send('Invalid Server Endpoint');

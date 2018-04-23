@@ -5,15 +5,18 @@
      <div class="col-xl-12">
       <div *ngIf="user">
         <h2 class="page-header">
-          Hello  {{ user.name }} !
+          Hello  {{ user.firstname }} !
         </h2>
       
         <ul class="list-group">
           <li class="list-group-item">Username: {{user.username}}</li>
           <li class="list-group-item">Email: {{user.email}}</li>
-          <li class="list-group-item">Number: {{user.number}}</li>
-          <li class="list-group-item">Address: {{user.address}}</li>
-          <li class="list-group-item">Address 2: {{user.address2}}</li>
+          <li class="list-group-item">Number: {{user.phonenumber}}</li>
+          <li class="list-group-item">Address: {{user.addressline1}}</li>
+          <li class="list-group-item">Address 2: {{user.addressline2}}</li>
+          <li class="list-group-item">Address 2: {{user.addressline3}}</li>
+          <li class="list-group-item">Address 2: {{user.county}}</li>
+          <li class="list-group-item">Phone number: {{user.phonenumber}}</li>
         </ul>
       </div>
      </div>

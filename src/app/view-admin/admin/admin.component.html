@@ -1,0 +1,41 @@
+<clr-main-container>
+    <app-navbar></app-navbar>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+          <h2 class="page-header">
+              Welcome Admin
+            </h2>            
+                <h1>Client List
+                  <a [routerLink]="['/client-create']" class="btn btn-primary">Create New
+                    
+                  </a>
+                </h1>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th class="left">Name</th>
+                      <th class="left">Email</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody *ngIf="user !=null">
+                      <tr *ngFor="let use of user">
+                      <td class="left">{{ use.email }}</td>
+                      <td class="left">{{ use.username }}</td>
+                      
+                      <td><a [routerLink]="['/client-details', use._id]">Show Detail</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+      </div>
+    </div>
+  
+  </clr-main-container>
+  
+
+
+
+
+

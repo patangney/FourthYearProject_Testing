@@ -1,6 +1,5 @@
 <toaster-container [toasterconfig]="config"></toaster-container>
-<clr-wizard #wizard [(clrWizardOpen)]="mdOpen" (clrWizardOnFinish)="onRegisterSubmit()" [clrWizardSize]="'xl'">
-
+<clr-wizard #wizard [(clrWizardOpen)]="mdOpen" (clrWizardOnFinish)="onRegisterSubmit()" [clrWizardSize]="'xl'">  
   <clr-wizard-page (clrWizardPageCustomButton)="onCustomClick($event)" [clrWizardPageNextDisabled]="!formPageOne.valid">
 
     <ng-template clrPageTitle>What is your name?</ng-template>

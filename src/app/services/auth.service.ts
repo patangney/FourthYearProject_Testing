@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
 
@@ -7,6 +7,8 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
+
+
 
   constructor(private http: Http) { }
 
@@ -36,7 +38,26 @@ export class AuthService {
 
   }
 
-  
+  // get Users
+  getUsers() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/admin', { headers: headers })
+      .map(res => res.json());
+  }
+
+  getUserDetail(id) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/api/admin/' + id, { headers: headers })
+      .map(res => res.json());
+  }
+
+
 
   // local storage can only store strings not objects
   storeUserData(token, user) {
@@ -46,7 +67,7 @@ export class AuthService {
     this.user = user;
 
   }
- 
+
   // Fetch token from local storage, and run it (Profile Route)
   loadToken() {
     const token = localStorage.getItem('id_token');
