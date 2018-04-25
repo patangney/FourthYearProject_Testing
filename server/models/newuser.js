@@ -60,7 +60,6 @@ const UserSchema = mongoose.Schema({
     enum: ['user', 'admin']
   }
 
-
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -73,23 +72,27 @@ module.exports.getUserById = function (id, callback) {
   User.findById(id, callback);
 }
 
-module.exports.roleAuthorisation = function(roles) {
-  return function(req, res, next) {
+module.exports.roleAuthorisation = function (roles) {
+  return function (req, res, next) {
     const user = req.user;
-    User.findById(user._id, function(err, foundUser) {
+    User.findById(user._id, function (err, foundUser) {
       if (err) {
-        res.status(422).json({error: 'No user found'});
+        res.status(422).json({
+          error: 'No user found'
+        });
         return next(err);
       }
       if (roles.indexOf(foundUser.role) > -1) {
         return next();
       }
-      res.status(401).json({error: 'You are not authorised to view this content'});
+      res.status(401).json({
+        error: 'You are not authorised to view this content'
+      });
       return next('Unauthorised');
     });
 
   }
-  
+
 }
 
 module.exports.getUserByUsername = function (username, callback) {

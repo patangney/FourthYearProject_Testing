@@ -15,6 +15,11 @@ const clientRoutes: Routes = [
     component: HomepageComponent
   },
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'register',
     component: RegisterComponent
   },

@@ -33,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Body Parser Middleware
 app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // Passport Middleware
 app.use(passport.initialize());
@@ -40,7 +41,6 @@ app.use(passport.session());
 
 require('./server/config/passport')(passport);
 
-// app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // Use routes /api/routes...
 app.use('/api', userRoutes);

@@ -65,7 +65,17 @@ router.post('/register', (req, res, next) => {
 
  // GET SINGLE User BY ID 
 router.get('/admin/:id', function(req, res, next) {
+  // const update = JSON.parse(req.body.user);
   User.findById(req.params.id, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
+/* UPDATE User */
+router.put('/admin/:id', function(req, res, next) {
+  User.findByIdAndUpdate(req.params._id, {$set:req.body.user}, function (err, post) {
     if (err) return next(err);
     res.json(post);
   });
@@ -102,7 +112,8 @@ router.post('/authenticate', (req, res, next) => {
             firstname: user.firstname,
             surname: user.surname,
             username: user.username,
-            email: user.email
+            email: user.email,
+            role: user.role
           }
         })
       } else {
@@ -123,6 +134,8 @@ router.get('/profile', passport.authenticate('jwt', {
     user: req.user
   });
 });
+
+
 
 
 

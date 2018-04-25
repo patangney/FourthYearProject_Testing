@@ -35,7 +35,7 @@
                                     [class.invalid]="userRegForm.get('firstName').touched && !userRegForm.get('firstName').valid"
                                     class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
                                     <input type="text" id="fnameInput" [(ngModel)]="model.firstname" name="firstName" formControlName="firstName" >
-                                    <span class="tooltip-content">You must provide a name!</span>
+                                    <span class="tooltip-content">You must provide a valid name!</span>
                                 </label>
                             </div>
                             <div class="form-group">
@@ -44,7 +44,7 @@
                                     [class.invalid]="userRegForm.get('surname').touched && !userRegForm.get('surname').valid"
                                     class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
                                     <input type="text" id="lnameInput" [(ngModel)]="model.surname" name="surname" formControlName="surname" >
-                                    <span class="tooltip-content">You must provide a surname!</span>
+                                    <span class="tooltip-content">You must provide a valid surname!</span>
                                 </label>
                             </div>
                             

@@ -25,11 +25,7 @@ const adminRoutes: Routes = [
     component: ClientEditComponent,
     data: {title: 'Edit Client'}
   },
-  {
-    path: '',
-    redirectTo: '/admin',
-    pathMatch: 'full'
-  }
+  
 ];
 
 @NgModule({

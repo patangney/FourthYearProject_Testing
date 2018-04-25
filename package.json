@@ -1,6 +1,6 @@
 {
   "name": "myapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -9,6 +9,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
+  },
+  "author": {
+    "name": "Patrick Tangney",
+    "email": "L00113525@student.lyit.ie"
   },
   "private": true,
   "dependencies": {

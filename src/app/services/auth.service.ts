@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
+import 'rxjs/add/operator/take';
+
+
+
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
+  
 
 
 
@@ -57,7 +62,17 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  updateDetails(id) {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/api/admin/' + id, this.user, { headers: headers })
+      .map(res => res.json());
 
+  }
+
+  
 
   // local storage can only store strings not objects
   storeUserData(token, user) {
@@ -74,9 +89,14 @@ export class AuthService {
     this.authToken = token;
   }
 
+  getUserRole() {
+    const role = this.user.role;
+  }
+
   // https://www.npmjs.com/package/angular2-jwt  
   loggedIn() {
     return tokenNotExpired('id_token');
+    
   }
 
   logout() {

@@ -22,6 +22,7 @@ export class HomepageComponent implements OnInit {
     emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
     passRegex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}$';
     phoneNumber = '^\s*(?:(?:00|\+)[\d]{1,3}\s*)?\(?\s*\d{1,4}\s*\)?\s*[\d\s]{5,10}\s*$';
+    stringValid = '^[a-zA-Z\-]+$';
 
     public open: boolean = false;
     
@@ -49,11 +50,31 @@ export class HomepageComponent implements OnInit {
     };
 
     userRegForm = new FormGroup({
-        firstName: new FormControl('', Validators.required),
-        surname: new FormControl('', Validators.required),
-        username: new FormControl('', Validators.required),
-        streetaddress: new FormControl('', Validators.required),
-        streetaddress2: new FormControl('', Validators.required),
+        firstName: new FormControl('', [
+            Validators.required,
+            Validators.pattern(this.stringValid)            
+
+        ]),
+        surname: new FormControl('', [
+            Validators.required,
+            Validators.pattern(this.stringValid)            
+
+        ]),
+        username: new FormControl('', [
+            Validators.required,
+            Validators.pattern(this.stringValid)            
+
+        ]),
+        streetaddress: new FormControl('', [
+            Validators.required,
+            Validators.pattern(this.stringValid)            
+
+        ]),
+        streetaddress2: new FormControl('', [
+            Validators.required,
+            Validators.pattern(this.stringValid)            
+
+        ]),
         optionalValidation: new FormControl('', Validators.maxLength(50)),
         selectCounty: new FormControl('', Validators.required),
 
@@ -88,9 +109,7 @@ export class HomepageComponent implements OnInit {
         private authService: AuthService,
         private router: Router) {
         this.toasterService = toasterService;
-    }
-
-   
+    }   
 
     onRegisterSubmit() {
         const user = {

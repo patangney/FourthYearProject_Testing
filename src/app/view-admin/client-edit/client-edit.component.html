@@ -1,3 +1,29 @@
-<p>
-  client-edit works!
-</p>
+<clr-main-container>
+  <app-navbar></app-navbar>
+<div class="container">
+    <h1>Editing User {{ user.firstname }} {{ user.surname }}</h1>
+    <div class="row">
+      <div class="col-md-6" *ngIf="user !=null">
+        <form (ngSubmit)="updateUser(user._id)" #userForm="ngForm">
+          <div class="form-group">
+            <label for="name">User</label>
+            <input type="text" class="form-control" [(ngModel)]="user.username" name="Username" required>
+          </div>
+          <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="user.firstname" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Surname</label>
+            <input type="text" class="form-control" [(ngModel)]="user.surname" name="surname" required>
+          </div>
+         
+          <div class="form-group">
+            <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</clr-main-container>
+  
