@@ -1,13 +1,18 @@
-
 .skew1 {
   clip-path: polygon(0 0, 1920px 0, 1920px 87%, 0 100%);
-} 
+}
+
 .skew2 {
   clip-path: polygon(0 0, 1920px 0, 1920px 58%, 0 100%);
-} 
+}
+
 .skew3 {
   clip-path: polygon(0 0, 1920px 0, 1920px 100%, 0 100%);
-} 
+}
+
+.skew5 {
+  clip-path: polygon( 0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
+}
 
 .skew1 {
   background-color: $default-color-2;
@@ -19,9 +24,12 @@
   padding: 150px 20px;
   position: relative;
   text-align: center;
-
   h1 {
     font-size: 32px;
+    color: $white;
+  }
+  h6 {
+    font-size: 20px;
     color: $white;
   }
   p {
@@ -33,12 +41,27 @@
 
 .skew2 {
   @extend .skew1;
-    background-color: $default-color-2;
-    margin: 0;
-}
-.skew3 {
-  @extend .skew1;
-    background-color: $dark-blue;
-    margin: 0;
+  background-color: $default-color-2;
+  margin: 0;
 }
 
+.skew3 {
+  @extend .skew1;
+  background-color: $dark-blue;
+  margin: 0;
+}
+
+.skew4 {
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  position: relative;
+  background-color: $dark-blue;
+  height: 300px;
+  margin-bottom: 100px;
+}
+
+.skew5 {
+  @extend .skew1;
+  background-color: $dark-blue;
+  margin: 0;
+}

@@ -7,279 +7,250 @@
       <div class="container">
         <div class="row">
           <div class="col12 mt-70">
-              <div class="centerItems" [@fadeInDown]="{value: fadeInDown, params: {timing: 1}}">
-                  <img class="" src="assets/img/logo.png">      
-          
-                </div>
-                <div class="container centerBtn">
-                  <div class="row">
-                      <div [@fadeInUp]="{value: slideInLeft, params: {timing: 2}}" class="align-items-center btn custom-btn2" (click)="wizard.open()">Sign Up!</div>
-                  </div>
-                </div>
-          </div>
-        </div>
-      </div>
+            <div class="centerItems" [@fadeInDown]="{value: fadeInDown, params: {timing: 1}}">
+              <img class="" src="assets/img/logo.png">
 
-      <div class="userreg">
-            <clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnFinish)="onRegisterSubmit()" [clrWizardSize]="'xl'">
-                <clr-wizard-title>BluSky Insurance </clr-wizard-title>
-              
-                <clr-wizard-button  [type]="'cancel'">Close</clr-wizard-button>
-                <clr-wizard-button  [type]="'previous'">Previous</clr-wizard-button>
-                <clr-wizard-button  [type]="'next'">Next</clr-wizard-button>
-                <clr-wizard-button  [type]="'finish'">Submit</clr-wizard-button>
-              
-                <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['firstName'].valid || !userRegForm.controls['surname'].valid">
-                    <ng-template clrPageTitle>Step One</ng-template> 
-                    <form [formGroup]="userRegForm" #formPageOne="ngForm">
-                        <section class="form-block">
-                            <h4>Hi there!<br>Can you tell me your name?</h4>
-                            
-                            <br>
-                            <div class="form-group">
-                                <label>Name</label>
-                                <label for="fnameInput" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('firstName').touched && !userRegForm.get('firstName').valid"
-                                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-                                    <input type="text" id="fnameInput" [(ngModel)]="model.firstname" name="firstName" formControlName="firstName" >
-                                    <span class="tooltip-content">You must provide a valid name!</span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>Surname</label>
-                                <label for="lnameInput" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('surname').touched && !userRegForm.get('surname').valid"
-                                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-                                    <input type="text" id="lnameInput" [(ngModel)]="model.surname" name="surname" formControlName="surname" >
-                                    <span class="tooltip-content">You must provide a valid surname!</span>
-                                </label>
-                            </div>
-                            
-                        </section>
-                    </form>
-                </clr-wizard-page>
-                <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['password'].valid || !userRegForm.controls['username'].valid">
-                    <ng-template clrPageTitle>Step Two</ng-template> <!-- mandatory -->
-                    <form [formGroup]="userRegForm" #formPageTwo="ngForm">
-                        <section class="form-block">
-                            <h3> Hi  {{ this.model.firstname }} !</h3>
-                            <h4> Please input a username and password</h4>
-                            <br>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <label for="userNameInput" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('username').touched && !userRegForm.get('username').valid"
-                                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-                                    <input type="text" id="userName" [(ngModel)]="model.username" name="username" formControlName="username" >
-                                    <span class="tooltip-content">You must provide a username!</span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <label for="userPasswordInput" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('password').touched && !userRegForm.get('password').valid"
-                                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
-                                    <input type="password" id="userPassword" [(ngModel)]="model.password" name="password" formControlName="password" >
-                                    <span class="tooltip-content">Password must contain: 1 digit, 1 Capital, 8 chars min.</span>
-                                </label>
-                            </div>
-                            
-                        </section>
-                    </form>
-                </clr-wizard-page>
-                <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['streetaddress'].valid || !userRegForm.controls['streetaddress2'].valid || !userRegForm.controls['selectCounty'].valid ">
-                    <ng-template clrPageTitle>Step Three</ng-template> 
-                    <form [formGroup]="userRegForm" #formPageThree="ngForm">
-                        <section class="form-block">
-                            <h3> {{ this.model.firstname }} ,</h3>
-                            <h4> What is your address ?</h4>
-                            <br>
-                            
-                            <div class="form-group">
-                                <label>House Name | House Number</label>
-                                <label for="houseNameNumber" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('optionalValidation').touched && !userRegForm.get('optionalValidation').valid"
-                                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
-                                    <input type="text" id="houseNameNumber" [(ngModel)]="model.housename" name="housename" formControlName="optionalValidation" >
-                                    <span class="tooltip-content">Max lenght is 50 characters!.</span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>Address Line 1</label>
-                                <label for="addressLineOne" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('streetaddress').touched && !userRegForm.get('streetaddress').valid"
-                                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
-                                    <input type="text" id="addressLineOne" [(ngModel)]="model.addressline1" name="addressline1" formControlName="streetaddress" >
-                                    <span class="tooltip-content">You must enter a address!.</span>
-                                </label>
-                            </div>
-                             <div class="form-group">
-                                <label>Address Line 2</label>
-                                <label for="addressLineTwo" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('streetaddress2').touched && !userRegForm.get('streetaddress2').valid"
-                                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
-                                    <input type="text" id="addressLineTwo" [(ngModel)]="model.addressline2" name="addressline2" formControlName="streetaddress2" >
-                                    <span class="tooltip-content">You must enter a address!.</span>
-                                </label>
-                            </div>
-                             <div class="form-group">
-                                <label>Address Line 3</label>
-                                <label for="addressLineThree" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('optionalValidation').touched && !userRegForm.get('optionalValidation').valid"
-                                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
-                                    <input type="text" id="addressLineThree" [(ngModel)]="model.addressline3" name="addressline3" formControlName="optionalValidation" >
-                                    <span class="tooltip-content">Max Lenght 50 characters!.</span>
-                                </label>
-                            </div>     
-                            <div class="form-group">
-                                <label>Select County</label>
-                                <label for="selectCounty" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('selectCounty').touched && !userRegForm.get('selectCounty').valid"
-                                    class="tooltip tooltip-validation tooltip-lg tooltip-top-right">
-                                    <select id="countySelect" [(ngModel)]="model.county" name="county" formControlName="selectCounty" >
-                                        <option *ngFor="let c of myCounty" [value]="c.county"> 
-                                            {{ c.county }}
-                                        </option>
-                                    </select>
-                                    <span class="tooltip-content">Max Lenght 50 characters!.</span>
-                                                            
-                                </label>
-                            </div>                    
-                            
-                        </section>
-                    </form>
-                </clr-wizard-page>
-              
-                <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['email'].valid || !userRegForm.controls['phoneNumValid'].valid">
-                    <ng-template clrPageTitle>Step Four</ng-template> 
-                    <form [formGroup]="userRegForm" #formPageFour="ngForm">
-                        <section class="form-block">
-                            <h4>We need a phone number and email address {{ this.model.username }}</h4>
-                            
-                            <br>
-                            <div class="form-group">
-                                <label>Email Address </label>
-                                <label for="emailInput" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('email').touched && !userRegForm.get('email').valid"
-                                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-                                    <input type="text" id="emailInput" [(ngModel)]="model.email" name="email" formControlName="email" >
-                                    <span class="tooltip-content">You must provide a valid email !</span>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone Number </label>
-                                <label for="phoneInput" aria-haspopup="true" role="tooltip"
-                                    [class.invalid]="userRegForm.get('phoneNumValid').touched && !userRegForm.get('phoneNumValid').valid"
-                                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
-                                    <input type="text" placeholder="0851234567" id="phoneInput" [(ngModel)]="model.phonenumber" name="phonenumber" formControlName="phoneNumValid" >
-                                    <span class="tooltip-content">You must provide a valid phone number !</span>
-                                </label>
-                            </div>
-                            
-                        </section>
-                    </form>
-                </clr-wizard-page>    
-              
-                <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid">
-                    <ng-template clrPageTitle></ng-template> 
-                    <ng-template clrPageNavTitle>
-                        <span *ngIf="formPageOne.valid && formPageTwo.valid">
-                            Ready to go!
-                        </span>
-                        <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
-                            Not ready yet
-                        </span>
-                    </ng-template> 
-              
-                    <div *ngIf="formPageOne.valid && formPageTwo.valid">
-                        <p>Thanks for providing us with the information {{ this.model.firstname }}.</p>
-                        <form class="compact">
-                            <label>Lets review before you submit</label>
-                            <section class="form-block">
-                                <div class="form-group">
-                                    <label>Your name:</label>
-                                    <span>{{ this.model.firstname }}  {{ this.model.surname }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Email:</label>
-                                    <span>{{ this.model.email }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Username:</label>
-                                    <span>{{ this.model.username }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone Number:</label>
-                                    <span>{{ this.model.phonenumber }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>House Number | House Name:</label>
-                                    <span>{{ this.model.housename }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address Line One:</label>
-                                    <span>{{ this.model.addressline1 }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address Line Two:</label>
-                                    <span>{{ this.model.addressline2 }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>Address Line Three:</label>
-                                    <span>{{ this.model.addressline3 }}</span>
-                                </div>
-                                <div class="form-group">
-                                    <label>County:</label>
-                                    <span>{{ this.model.county }}</span>
-                                </div>
-                            </section>
-                        </form>
-                    </div>
-              
-                    <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
-                        <p>Not quite there yet.</p>
-                    </div>
-              
-                </clr-wizard-page>
-                
-                <!-- <p>Form value: {{ this.model | json }}</p> -->
-              </clr-wizard>
-              
-              
-        </div>
-      
-
-    </div>
-
-    <!-- <div [@fadeInDown]="{value: fadeInDown, params: {timing: 1}}">
-        <img class="" src="assets/img/logo.png">
-      </div> -->
-
-
-
-
-
-    <!-- <div class="single_img height-800 background-overlay" style="background-image: url(assets/img/header.jpg);">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="welcome_slide_img align-items-center">
-
-                <div [@fadeInDown]="{value: fadeInDown, params: {timing: 1}}">
-                  <img class="" src="assets/img/logo.png">
-                </div>
-                <div [@fadeInUp]="{value: slideInLeft, params: {timing: 2}}" class="btn custom-btn2 center">Sign Up!</div>
+            </div>
+            <div class="container centerBtn">
+              <div class="row">
+                <div [@fadeInUp]="{value: slideInLeft, params: {timing: 2}}" class="align-items-center btn custom-btn2" (click)="wizard.open()">Sign Up!</div>
               </div>
             </div>
           </div>
         </div>
-      </div> -->
-    <div class="skew3">
-      <h1>Stuff to go here</h1>
-      <h6>[todo]</h6>
+      </div>
+      <!-- User Form -->
+      <div class="userreg">
+        <clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnFinish)="onRegisterSubmit()" [clrWizardSize]="'xl'">
+          <clr-wizard-title>BluSky Insurance </clr-wizard-title>
+
+          <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
+          <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
+          <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
+          <clr-wizard-button [type]="'finish'">Submit</clr-wizard-button>
+
+          <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['firstName'].valid || !userRegForm.controls['surname'].valid">
+            <ng-template clrPageTitle>Step One</ng-template>
+            <form [formGroup]="userRegForm" #formPageOne="ngForm">
+              <section class="form-block">
+                <h4>Hi there!
+                  <br>Can you tell me your name?</h4>
+
+                <br>
+                <div class="form-group">
+                  <label>Name</label>
+                  <label for="fnameInput" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('firstName').touched && !userRegForm.get('firstName').valid"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                    <input type="text" id="fnameInput" [(ngModel)]="model.firstname" name="firstName" formControlName="firstName">
+                    <span class="tooltip-content">You must provide a valid name!</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Surname</label>
+                  <label for="lnameInput" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('surname').touched && !userRegForm.get('surname').valid"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                    <input type="text" id="lnameInput" [(ngModel)]="model.surname" name="surname" formControlName="surname">
+                    <span class="tooltip-content">You must provide a valid surname!</span>
+                  </label>
+                </div>
+
+              </section>
+            </form>
+          </clr-wizard-page>
+          <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['password'].valid || !userRegForm.controls['username'].valid">
+            <ng-template clrPageTitle>Step Two</ng-template>
+            <!-- mandatory -->
+            <form [formGroup]="userRegForm" #formPageTwo="ngForm">
+              <section class="form-block">
+                <h3> Hi {{ this.model.firstname }} !</h3>
+                <h4> Please input a username and password</h4>
+                <br>
+                <div class="form-group">
+                  <label>Username</label>
+                  <label for="userNameInput" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('username').touched && !userRegForm.get('username').valid"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                    <input type="text" id="userName" [(ngModel)]="model.username" name="username" formControlName="username">
+                    <span class="tooltip-content">You must provide a username!</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <label for="userPasswordInput" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('password').touched && !userRegForm.get('password').valid"
+                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
+                    <input type="password" id="userPassword" [(ngModel)]="model.password" name="password" formControlName="password">
+                    <span class="tooltip-content">Password must contain: 1 digit, 1 Capital, 8 chars min.</span>
+                  </label>
+                </div>
+
+              </section>
+            </form>
+          </clr-wizard-page>
+          <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['streetaddress'].valid || !userRegForm.controls['streetaddress2'].valid || !userRegForm.controls['selectCounty'].valid ">
+            <ng-template clrPageTitle>Step Three</ng-template>
+            <form [formGroup]="userRegForm" #formPageThree="ngForm">
+              <section class="form-block">
+                <h3> {{ this.model.firstname }} ,</h3>
+                <h4> What is your address ?</h4>
+                <br>
+
+                <div class="form-group">
+                  <label>House Name | House Number</label>
+                  <label for="houseNameNumber" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('optionalValidation').touched && !userRegForm.get('optionalValidation').valid"
+                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
+                    <input type="text" id="houseNameNumber" [(ngModel)]="model.housename" name="housename" formControlName="optionalValidation">
+                    <span class="tooltip-content">Max lenght is 50 characters!.</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Address Line 1</label>
+                  <label for="addressLineOne" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('streetaddress').touched && !userRegForm.get('streetaddress').valid"
+                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
+                    <input type="text" id="addressLineOne" [(ngModel)]="model.addressline1" name="addressline1" formControlName="streetaddress">
+                    <span class="tooltip-content">You must enter a address!.</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Address Line 2</label>
+                  <label for="addressLineTwo" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('streetaddress2').touched && !userRegForm.get('streetaddress2').valid"
+                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
+                    <input type="text" id="addressLineTwo" [(ngModel)]="model.addressline2" name="addressline2" formControlName="streetaddress2">
+                    <span class="tooltip-content">You must enter a address!.</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Address Line 3</label>
+                  <label for="addressLineThree" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('optionalValidation').touched && !userRegForm.get('optionalValidation').valid"
+                    class="tooltip tooltip-validation tooltip-lg tooltip-bottom-right">
+                    <input type="text" id="addressLineThree" [(ngModel)]="model.addressline3" name="addressline3" formControlName="optionalValidation">
+                    <span class="tooltip-content">Max Lenght 50 characters!.</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Select County</label>
+                  <label for="selectCounty" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('selectCounty').touched && !userRegForm.get('selectCounty').valid"
+                    class="tooltip tooltip-validation tooltip-lg tooltip-top-right">
+                    <select id="countySelect" [(ngModel)]="model.county" name="county" formControlName="selectCounty">
+                      <option *ngFor="let c of myCounty" [value]="c.county">
+                        {{ c.county }}
+                      </option>
+                    </select>
+                    <span class="tooltip-content">Max Lenght 50 characters!.</span>
+
+                  </label>
+                </div>
+
+              </section>
+            </form>
+          </clr-wizard-page>
+
+          <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['email'].valid || !userRegForm.controls['phoneNumValid'].valid">
+            <ng-template clrPageTitle>Step Four</ng-template>
+            <form [formGroup]="userRegForm" #formPageFour="ngForm">
+              <section class="form-block">
+                <h4>We need a phone number and email address {{ this.model.username }}</h4>
+
+                <br>
+                <div class="form-group">
+                  <label>Email Address </label>
+                  <label for="emailInput" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('email').touched && !userRegForm.get('email').valid"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                    <input type="text" id="emailInput" [(ngModel)]="model.email" name="email" formControlName="email">
+                    <span class="tooltip-content">You must provide a valid email !</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>Phone Number </label>
+                  <label for="phoneInput" aria-haspopup="true" role="tooltip" [class.invalid]="userRegForm.get('phoneNumValid').touched && !userRegForm.get('phoneNumValid').valid"
+                    class="tooltip tooltip-validation tooltip-md tooltip-bottom-right">
+                    <input type="text" placeholder="0851234567" id="phoneInput" [(ngModel)]="model.phonenumber" name="phonenumber" formControlName="phoneNumValid">
+                    <span class="tooltip-content">You must provide a valid phone number !</span>
+                  </label>
+                </div>
+
+              </section>
+            </form>
+          </clr-wizard-page>
+
+          <clr-wizard-page [clrWizardPageNextDisabled]="!formPageOne.valid || !formPageTwo.valid">
+            <ng-template clrPageTitle></ng-template>
+            <ng-template clrPageNavTitle>
+              <span *ngIf="formPageOne.valid && formPageTwo.valid">
+                Ready to go!
+              </span>
+              <span *ngIf="!formPageOne.valid || !formPageTwo.valid">
+                Not ready yet
+              </span>
+            </ng-template>
+
+            <div *ngIf="formPageOne.valid && formPageTwo.valid">
+              <p>Thanks for providing us with the information {{ this.model.firstname }}.</p>
+              <form class="compact">
+                <label>Lets review before you submit</label>
+                <section class="form-block">
+                  <div class="form-group">
+                    <label>Your name:</label>
+                    <span>{{ this.model.firstname }} {{ this.model.surname }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Email:</label>
+                    <span>{{ this.model.email }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Username:</label>
+                    <span>{{ this.model.username }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Phone Number:</label>
+                    <span>{{ this.model.phonenumber }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>House Number | House Name:</label>
+                    <span>{{ this.model.housename }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Address Line One:</label>
+                    <span>{{ this.model.addressline1 }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Address Line Two:</label>
+                    <span>{{ this.model.addressline2 }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>Address Line Three:</label>
+                    <span>{{ this.model.addressline3 }}</span>
+                  </div>
+                  <div class="form-group">
+                    <label>County:</label>
+                    <span>{{ this.model.county }}</span>
+                  </div>
+                </section>
+              </form>
+            </div>
+
+            <div *ngIf="!formPageOne.valid || !formPageTwo.valid">
+              <p>Not quite there yet.</p>
+            </div>
+
+          </clr-wizard-page>
+
+          <!-- <p>Form value: {{ this.model | json }}</p> -->
+        </clr-wizard>
+
+
+      </div>
+
+
     </div>
 
+
+    <div class="skew3">
+      <h1>At BluSky </h1>
+      <h6>we have you covered</h6>
+    </div>
+
+
   </section>
+
   <!-- ****** Block Area ****** -->
   <section>
     <div class="row block-area">
@@ -303,6 +274,22 @@
       </div>
       <div class="block effect box-border2 col-lg col-md col-sm">
         <img src="assets/img/covered/cover6.png">
+      </div>
+    </div>
+    <div class="skew4">
+      <div class="container">
+        
+          <div class="row block-area">
+            <div class="col-lg col-md col-sm"></div>
+            <div class="col-lg col-md col-sm">
+
+              <img src="assets/img/covered/hand.png">
+            </div>
+            <div class="col-lg col-md col-sm"></div>
+          </div>
+        
+
+
       </div>
     </div>
 
@@ -350,6 +337,6 @@
     </div>
   </div>
 
-  
+
 
 </clr-main-container>
