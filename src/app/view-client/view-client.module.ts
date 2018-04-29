@@ -2,6 +2,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { NgStyle } from '@angular/common';
 
 import { ViewClientRoutingModule } from './view-client-routing.module';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -20,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { Test2Component } from './test2/test2.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { OwlModule } from 'ngx-owl-carousel';
 
 
 
@@ -33,6 +35,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     ReactiveFormsModule,
     SharedModule,
     ClarityModule,
+    OwlModule,
     ToasterModule.forRoot(),
     
   ],

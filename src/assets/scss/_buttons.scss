@@ -1,0 +1,43 @@
+@import 'mixins';
+// Button Overwrite 
+.btn-ow {
+  display: inline-block;
+  min-width: 170px;
+  height: 55px;
+  color: $white;
+  border: 3px solid #fff;
+  border-radius: 2px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 49px;
+
+  &hover,
+  &focus {
+    font-weight: 700;
+    color: #fff;
+    border-color: $default-color-2;
+    background-color: $default-color-3;
+  }
+}
+
+.custom-btn1 {
+  @extend .btn-ow;
+  background-color: $default-color-1;
+}
+.custom-btn2 {
+  @extend .btn-ow;
+  background-color: $default-color-2;
+  color: $white;
+}
+
+.custom-btn3 {
+  @extend .btn-ow;
+  background-color: $default-color-3;
+}
+
+.custom-btn4 {
+  @extend .btn-ow;
+  background-color: $default-color-4;
+}

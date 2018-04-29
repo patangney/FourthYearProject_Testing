@@ -1,0 +1,91 @@
+@import 'mixins';
+.block-area .block {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 33.333333%;
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 40px 15px;
+  text-align: center;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.block-area .img {
+  width: 100%;
+  height: 100%;
+}
+
+.block-area .block h5 {
+  font-size: 18px;
+  color: $white;
+  margin-bottom: 15px;
+}
+
+.block-area .block h6,
+.block-area .block a {
+  font-size: 12px;
+  color: $white;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.effect {
+  padding: 150px 50px;
+  width: 50%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: relative;
+  z-index: 1;
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: $default-color-3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -8;
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+  }
+  &:hover:after {
+    opacity: 0.7;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  }
+}
+
+
+.block {
+  @extend .block-area;
+  @include add-background($default-color-6);
+}
+
+.block:nth-child(2) {
+  @extend .block-area;
+  @include add-background($default-color-5);
+}
+
+.block:nth-child(3) {
+  @extend .block-area;
+  @include add-background($default-color-4);
+}
+
+.block:nth-child(4) {
+  @extend .block-area;
+  @include add-background($default-color-3);
+}
+
+.block:nth-child(5) {
+  @extend .block-area;
+  @include add-background($default-color-2);
+}
+
+.block:last-child {
+  @extend .block-area;
+  @include add-background($default-color-1);
+}

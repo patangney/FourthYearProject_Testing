@@ -1,0 +1,10 @@
+// Blocks Mixin + Darken
+@mixin add-background($color){
+	background: darken($color, 10%);
+	@if $color == $default-color-1{
+		color:#68D8D6;
+	} @else {
+		color:#9CEAEF;
+	}
+}	
+

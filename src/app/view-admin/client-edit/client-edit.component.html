@@ -7,15 +7,43 @@
         <form (ngSubmit)="updateUser(user._id)" #userForm="ngForm">
           <div class="form-group">
             <label for="name">User</label>
-            <input type="text" class="form-control" [(ngModel)]="user.username" name="Username" required>
+            <input type="text" class="form-control" [(ngModel)]="user.username" name="username" [disabled]="true">
           </div>
           <div class="form-group">
             <label for="name">First Name</label>
-            <input type="text" class="form-control" [(ngModel)]="user.firstname" name="title" required>
+            <input type="text" class="form-control" [(ngModel)]="user.firstname" name="firstname" required>
           </div>
           <div class="form-group">
             <label for="name">Surname</label>
             <input type="text" class="form-control" [(ngModel)]="user.surname" name="surname" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" [(ngModel)]="user.email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Phone Number</label>
+            <input type="text" class="form-control" [(ngModel)]="user.phonenumber" name="phonenumber" required>
+          </div>
+          <div class="form-group">
+            <label for="name">House Number</label>
+            <input type="text" class="form-control" [(ngModel)]="user.housenumber" name="address1">
+          </div>
+          <div class="form-group">
+            <label for="name">Address Line 1</label>
+            <input type="text" class="form-control" [(ngModel)]="user.addressline1" name="addressline1" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Address Line 2</label>
+            <input type="text" class="form-control" [(ngModel)]="user.addressline2" name="addressline2" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Address Line 3</label>
+            <input type="text" class="form-control" [(ngModel)]="user.addressline3" name="addressline3">
+          </div>
+          <div class="form-group">
+            <label for="name">County</label>
+            <input type="text" class="form-control" [(ngModel)]="user.county" name="county" required>
           </div>
          
           <div class="form-group">

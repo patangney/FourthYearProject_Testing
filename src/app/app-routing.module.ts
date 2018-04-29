@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   
   { path: 'admin', loadChildren: 'app/view-admin/view-admin.module#ViewAdminModule' },     
-  { path: '**', component: NotfoundComponent },
-  
+  { path: '**', component: NotfoundComponent },  
   
 ];
 

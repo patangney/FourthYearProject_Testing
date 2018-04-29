@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ToasterModule } from 'angular2-toaster';
 import { AuthService } from '../services/auth.service';
 import { ValidateService } from '../services/validate.service';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -14,8 +15,8 @@ import { ValidateService } from '../services/validate.service';
     RouterModule,
     ToasterModule.forRoot(),
   ],
-  declarations: [NavbarComponent],
-  exports: [NavbarComponent],
+  declarations: [NavbarComponent, FooterComponent],
+  exports: [NavbarComponent, FooterComponent],
   providers: [AuthService, ValidateService]
 })
 export class SharedModule { }

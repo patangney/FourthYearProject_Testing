@@ -25,9 +25,7 @@ export class AdminComponent implements OnInit {
   }
 
   public loadUsers() {
-    this.authService
-    .getUsers()
-    .subscribe((data) => {
+    this.authService.getUsers().subscribe((data) => {
       this.user = data;
       
     },

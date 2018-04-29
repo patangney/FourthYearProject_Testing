@@ -1,0 +1,154 @@
+
+
+
+
+
+// Theme Colors Overwrite
+
+//navbar
+.header.header-6 {
+    background-color: $default-color-1;
+}
+
+.bg-img {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* -- Welcome Section */
+
+.single_slide {
+  background-position: center top;
+  background-size: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.welcome_slide_text {
+  position: relative;
+  z-index: 1;
+}
+
+.align-items-center {
+  -webkit-box-align: center !important;
+  -ms-flex-align: center !important;
+  align-items: center !important
+}
+
+.welcome_slide_img > h2 {
+  font-size: 92px;
+  letter-spacing: 0;
+  margin-left: -5px;
+  text-transform: uppercase;
+  color: $white;
+  margin-bottom: 20px;
+}
+
+.welcome_slide_img h6 {
+  color: $white;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Custom Heights */
+
+.height-800 {
+  height: 800px !important;
+}
+
+.welcome_slide_img .btn.btn-primary {
+  margin: 70px;
+}
+
+.welcome_slide_img img {
+  margin-left: 40px;
+  margin-top: -150px;
+}
+
+/* -------------------
+  :: 7.0 Top Discount CSS
+  ------------------- */
+
+
+.d-md-flex {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -ms-flexbox !important;
+  display: flex !important
+}
+
+/* --------------------------
+  :: 10.0 Top Catagory Area CSS
+  -------------------------- */
+
+.single_catagory_area {
+  padding: 150px 50px;
+  width: 50%;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: relative;
+  z-index: 1;
+}
+
+.single_catagory_area:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: $default-color-3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -8;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+}
+
+.single_catagory_area:hover:after {
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+}
+
+.single_catagory_area h6 {
+  text-transform: uppercase;
+}
+
+.catagory-content {
+  width: 55%;
+}
+
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #ddd;
+  margin: 30px 0;
+}
+
+
+.scroll-to-top {
+  background-color: $default-color-1;
+  color: $white;
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 2s ease-in-out;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+.show-scroll {
+  opacity: .5;
+  transition: all .5s ease-in-out;
+}
+
+

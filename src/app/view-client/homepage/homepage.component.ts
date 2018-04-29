@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentInit, Inject, HostListener } from '@angular/core';
+import { NgStyle } from '@angular/common';
+
 import { ClrWizard } from '@clr/angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToasterModule, ToasterService, ToasterConfig, Toast } from 'angular2-toaster';
@@ -6,27 +8,42 @@ import { ValidateService } from '../../services/validate.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { slideInLeft, fadeInUp, fadeInDown } from 'ng-animate';
+import { DOCUMENT } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  animations: [
+    trigger('slideInLeft', [transition('* => *', useAnimation(slideInLeft))]),
+    trigger('fadeInUp', [transition('* => *', useAnimation(fadeInUp))]),
+    trigger('fadeInDown', [transition('* => *', useAnimation(fadeInDown))]),
+  ],
 })
 export class HomepageComponent implements OnInit {
+    navIsFixed: boolean
 
     @ViewChild("wizard") wizard: ClrWizard;
     @ViewChild("number") numberFi: any;
+    
+    slideInLeft: any;
+    fadeInUp: any;
 
     // Validation
-    emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
+    emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{3,15})$';
     passRegex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}$';
     phoneNumber = '^\s*(?:(?:00|\+)[\d]{1,3}\s*)?\(?\s*\d{1,4}\s*\)?\s*[\d\s]{5,10}\s*$';
     stringValid = '^[a-zA-Z\-]+$';
 
     public open: boolean = false;
+
+      
+
     
-    
+    // counties
     myCounty = [
         { id: 1, county: 'Kerry' },
         { id: 2, county: 'Cork' },
@@ -103,13 +120,25 @@ export class HomepageComponent implements OnInit {
         animation: 'fade'
     });
 
-    constructor(
+    constructor(@Inject(DOCUMENT) private document: Document,
         private validateService: ValidateService,
         private toasterService: ToasterService,
         private authService: AuthService,
         private router: Router) {
         this.toasterService = toasterService;
-    }   
+    }
+    
+    @HostListener("window:scroll", [])
+
+    onWindowScroll() {
+        if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
+            this.navIsFixed = true;
+        } else if (this.navIsFixed && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) { this.navIsFixed = false; } } scrollToTop() { (function smoothscroll() { let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; if (currentScroll > 0) {
+                window.requestAnimationFrame(smoothscroll);
+                window.scrollTo(0, currentScroll - (currentScroll / 5));
+            }
+        })();
+    }
 
     onRegisterSubmit() {
         const user = {
@@ -165,5 +194,7 @@ export class HomepageComponent implements OnInit {
     ngOnInit() {
 
     }
+
+    
 
 }

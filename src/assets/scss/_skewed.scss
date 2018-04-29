@@ -1,0 +1,92 @@
+@import '../scss/_varibles';
+@import '../scss/_fonts';
+
+// slanted edge here
+.hero img {
+  clip-path: polygon(0 0, 1920% 0, 100% 85%, 0 100%);
+}
+
+.promo {
+  clip-path: polygon(0 0, 1920px 0, 1920px 87%, 0 100%);
+} 
+.promo2 {
+  clip-path: polygon(0 0, 1920px 0, 1920px 58%, 0 100%);
+} 
+.hero {
+  color: #fff;
+  font-family: $font-family;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  img {
+    width: 100%;
+  }
+  figcaption {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 0.5em;
+  }
+}
+.hero {
+  color: #fff;
+  font-family: $font-family;
+  position: relative;
+  text-align: center;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  img {
+    width: 100%;
+  }
+  figcaption {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 0.5em;
+  }
+}
+
+.promo, .promo2 {
+  background-color: $default-color-2;
+  background-size: cover;
+  color: #fff;
+  font-family: $font-family;
+  margin: 50px 0;
+  overflow: hidden;
+  padding: 150px 20px;
+  position: relative;
+  text-align: center;
+//   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.5);
+  h1 {
+    font-size: 32px;
+    color: $white;
+  }
+  p {
+    font-size: 14px;
+    color: $white;
+    margin-top: 0.5em;
+  }
+}
+
+.promo2 {
+    background-color: #16284b;
+    margin: 0;
+}
+
