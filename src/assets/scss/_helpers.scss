@@ -63,10 +63,13 @@
   margin-bottom: 100px;
 } 
 
-// Borders
+
+// Borders & Animiation
 .box-border:hover {
   box-shadow: inset 0 0 0 25px $default-color-4;
 }
 .box-border2:hover {
-  box-shadow: inset 0 0 0 25px $white;
+  box-shadow: inset 0 0 0 25px $white !important;
 }
+
+

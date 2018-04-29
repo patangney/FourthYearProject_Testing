@@ -1,9 +1,8 @@
-@import '../../assets/scss/_varibles';
 /* ---------------------- Footer AREA ---------------------- */
 
-a,
-a:hover,
-a:focus {
+footer a,
+footer a:hover,
+footer a:focus {
   -webkit-transition: all 500ms ease 0s;
   transition: all 500ms ease 0s;
   text-decoration: none;
@@ -13,33 +12,28 @@ a:focus {
 }
 
 .footer_area {
-  background-color: #fff;
-  border-top: 2px solid #e5e5e5;
+  background-color: $white;
   padding: 100px 0 50px;
-}
-
-.footer_area a:link {
-  color: $dark !important;
-}
-
-.footer_content>p {
-  font-size: 14px;
-  color: $dark;
-}
-
-.footer_content>p:first-child {
-  margin-bottom: 30px;
+  a:link {
+    color: $dark !important;
+  }
+  .footer_content>p {
+    font-size: 15px;
+    color: $dark;
+  }
+  .footer_content>p:first-child {
+    margin-bottom: 30px;
+  }
 }
 
 .footer_social_area>a {
   display: inline-block;
   font-size: 26px;
   padding: 0 30px;
-}
-
-.footer_social_area>a:hover {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
+  &:hover {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+  }
 }
 
 .footer_widget_menu a {
@@ -50,65 +44,52 @@ a:focus {
   -webkit-transition-duration: 500ms;
   transition-duration: 500ms;
   font-weight: 600;
-}
-
-.footer_widget_menu a:hover {
-  margin-left: 5px;
-  color: $default-color-3;
-}
-
-.footer_widget_menu a i {
-  padding-right: 5px;
-}
-
-.copywrite_text>p {
-  color: #9f9f9f;
-  font-size: 14px;
-  margin-top: 30px;
-  display: block;
-}
-
-.footer_widget_menu a:hover {
-  margin-left: 5px;
-  color: $default-color-2;
+  &:hover {
+    margin-left: 5px;
+    color: $default-color-3;
+  }
+  i {
+    padding-right: 5px;
+  }
 }
 
 .subscribtion_form {
   position: relative;
   z-index: 1;
+  .mail {
+    border: none;
+    border-radius: 0;
+    font-size: 12px;
+    height: 50px;
+    padding: 5px 15px;
+    width: 100%;
+    background-color: $default-color-5;
+    color: $dark;
+    font-style: italic;
+  }
+  .submit {
+    background-color: $dark;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    height: 50px;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 0;
+    -webkit-transition-duration: 500ms;
+    transition-duration: 500ms;
+    padding: 0 30px;
+    font-weight: 700;
+    &:hover {
+      background-color: $default-color-2;
+      color: #fff;
+    }
+  }
 }
 
-.subscribtion_form .mail {
-  border: none;
-  border-radius: 0;
-  font-size: 12px;
-  height: 50px;
-  padding: 5px 15px;
-  width: 100%;
-  background-color: $default-color-5;
-  color: $dark;
-  font-style: italic;
-}
 
-.subscribtion_form .submit {
-  background-color: $dark;
-  border: none;
-  border-radius: 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  height: 50px;
-  position: absolute;
-  right: 0;
-  text-transform: uppercase;
-  top: 0;
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
-  padding: 0 30px;
-  font-weight: 700;
-}
 
-.subscribtion_form .submit:hover {
-  background-color: $default-color-2;
-  color: #fff;
-}
+

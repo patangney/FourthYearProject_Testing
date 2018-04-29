@@ -35,6 +35,7 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.1.0",
+    "classlist.js": "^1.1.20150312",
     "concurrently": "^3.5.1",
     "core-js": "^2.5.5",
     "cors": "^2.8.4",
@@ -50,6 +51,7 @@
     "rellax": "^1.6.2",
     "rxjs": "^5.5.6",
     "sweetalert2": "^7.18.0",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
