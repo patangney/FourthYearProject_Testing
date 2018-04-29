@@ -24,10 +24,10 @@
             <clr-wizard #wizard [(clrWizardOpen)]="open" (clrWizardOnFinish)="onRegisterSubmit()" [clrWizardSize]="'xl'">
                 <clr-wizard-title>BluSky Insurance </clr-wizard-title>
               
-                <clr-wizard-button [type]="'cancel'">Close</clr-wizard-button>
-                <clr-wizard-button [type]="'previous'">Previous</clr-wizard-button>
-                <clr-wizard-button [type]="'next'">Next</clr-wizard-button>
-                <clr-wizard-button [type]="'finish'">Submit</clr-wizard-button>
+                <clr-wizard-button  [type]="'cancel'">Close</clr-wizard-button>
+                <clr-wizard-button  [type]="'previous'">Previous</clr-wizard-button>
+                <clr-wizard-button  [type]="'next'">Next</clr-wizard-button>
+                <clr-wizard-button  [type]="'finish'">Submit</clr-wizard-button>
               
                 <clr-wizard-page [clrWizardPageNextDisabled]="!userRegForm.controls['firstName'].valid || !userRegForm.controls['surname'].valid">
                     <ng-template clrPageTitle>Step One</ng-template> 
