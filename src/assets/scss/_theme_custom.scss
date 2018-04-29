@@ -13,11 +13,11 @@
 
 /* -- Welcome Section */
 
-.single_slide {
-  background-position: center top;
+.single_img {
+  background-position: center center;
   background-size: cover;
-  position: relative;
-  z-index: 1;
+  background-repeat: no-repeat;
+    
 }
 
 .welcome_slide_text {
@@ -46,12 +46,14 @@
   margin-bottom: 5px;
 }
 
+
+
 /* Custom Heights */
 
 
 
 .welcome_slide_img .btn.btn-primary {
-  margin: 70px;
+  margin-left: 1960px;
 }
 
 .welcome_slide_img img {
