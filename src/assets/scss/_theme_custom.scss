@@ -1,4 +1,3 @@
-// Theme Colors Overwrite
 
 //navbar
 .header.header-6 {
@@ -20,10 +19,6 @@
     
 }
 
-.welcome_slide_text {
-  position: relative;
-  z-index: 1;
-}
 
 .align-items-center {
   -webkit-box-align: center !important;
@@ -102,7 +97,7 @@
 
 
 .login-wrapper {
-  background-image: url("assets/img/login.png");
+  background-image: url('../img/login.png');
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: right center;

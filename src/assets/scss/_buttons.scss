@@ -49,18 +49,18 @@
   background-color: $default-color-1;
 }
 
-// .clr-wizard-btn--primary.disabled {
-//   @extend .btn-ow;
-//   background-color: $default-color-1;
+.clr-wizard-btn--primary.disabled {
+  @extend .btn-ow;
+  background-color: $default-color-1;
 
-// }
+}
 
-// .clr-wizard-btn--primary {
-//   @extend .btn-ow;
-//   background-color: $default-color-1;
-// }
+.clr-wizard-btn--primary {
+  @extend .btn-ow;
+  background-color: $default-color-1;
+}
 
-// .clr-wizard-btn--tertiary {
-//   @extend .btn-ow;
-//   background-color: $default-color-2;
-// }
+.clr-wizard-btn--tertiary {
+  @extend .btn-ow;
+  background-color: $default-color-2;
+}

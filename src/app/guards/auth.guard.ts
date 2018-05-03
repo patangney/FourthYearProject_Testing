@@ -18,12 +18,7 @@ export class AuthGuard implements CanActivate {
     }
   }
 
-  // canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-  //   let loggedInUser = this.authService.loggedIn();
-  //   if (loggedInUser.role === 'admin') {
-
-  //   }
-  // }
+  
 
   
 }

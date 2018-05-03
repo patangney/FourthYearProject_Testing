@@ -1,0 +1,16 @@
+@import '../../../assets/scss/_varibles.scss';
+
+.question-content {
+  h2 {
+    color: $white;
+  }
+  a:link {
+      color: $white;
+  }
+  
+  
+}
+
+.question_block {
+    max-height: 350px;
+}
