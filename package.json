@@ -34,7 +34,7 @@
     "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
-    "bootstrap": "^4.1.0",
+    "bootstrap": "^4.3.1",
     "classlist.js": "^1.1.20150312",
     "concurrently": "^3.5.1",
     "core-js": "^2.5.5",
